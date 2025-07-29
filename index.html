@@ -11,16 +11,24 @@
 </head>
 <body>
     <main class="task-maker-app">
-        <section class="title-container">
-            <h1>Task Maker</h1>
-            <button>mode</button>
+        <section class="header-container">
+            <div class="header-container__title">
+                <h1>Task Maker</h1>
+                <button>
+                    <img src="./assets/moon-icon.svg" alt="">
+                </button>
+            </div>
+            <form action="">
+                <input type="text" placeholder="Enter new task">
+                <button type="submit">Add task</button>
+            </form>
         </section>
         <section class="task-container">
-            <article>
-                <p>Task</p>
+            <article class="task-container__card">
+                <p>Lorem ipsum dolor sit amet</p>
                 <div>
-                    <span>edit</span>
-                    <span>delete</span>
+                    <button class="edit"><img src="./assets/pencil-solid-icon.svg" alt=""></button>
+                    <button class="delete"><img src="./assets/delete-icon.svg" alt=""></button>
                 </div>
             </article>
         </section>

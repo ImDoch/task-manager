@@ -1,9 +1,11 @@
-/* Estilos Iniciales*/
+/*Estilos Iniciales*/
 :root {
     --purple-soft: #eff0fe;
     --spring-purple: #aaadf7;
     --modern-purple: #6c5ce7;
     --dark-purple: #3f337c;
+    --black: #261e48;
+    --white: #FFFFFF;
 }
 * {
     box-sizing: border-box;
@@ -14,7 +16,116 @@ html {
     font-size: 62.5%;
 }
 body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
     font-family: "Funnel Sans", sans-serif;
     font-size: 1.6rem;
     background-color: var(--purple-soft);
+}
+/*Estilos de la app*/
+.task-maker-app {
+    width: clamp(288px, 90%, 700px);
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 15px;
+    color: var(--black);
+    background-color: var(--white);
+}
+.header-container__title {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    h1 {
+        font-size: clamp(3rem, 5vw, 4rem);
+        color: var(--modern-purple);
+    }
+    button {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 2px solid var(--modern-purple);
+        background-color: var(--white);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--purple-soft);
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+form {
+    width: clamp(240px, 90%, 600px);
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    input {
+        width: clamp(160px, 65%, 400px);
+        padding: 5px;
+        font-size: clamp(1.6rem, 2vw, 1.8rem);
+        border-radius: 5px;
+        border: 1px solid var(--modern-purple);
+        caret-color: var(--spring-purple);
+        color: var(--black);
+
+        &:focus {
+            border: 1px solid var(--spring-purple);
+            outline: 1px solid var(--spring-purple);
+        }
+    }
+    button {
+        margin-left: 5px;
+        padding: 5px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: 1px solid var(--modern-purple);
+        background-color: var(--white);
+        color: var(--modern-purple);
+
+        &:hover {
+            background-color: var(--purple-soft);
+            cursor: pointer;
+        }
+    }
+}
+.task-container {
+    width: clamp(240px, 90%, 600px);
+    height: 160px;
+    margin: 0 auto;
+    overflow-y: auto;
+    p {
+        font-size:clamp(1.6rem, 2vw, 1.8rem)
+    }
+    .task-container__card {
+        width: 90%;
+        margin: 0 auto 5px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        background-color: var(--purple-soft);
+        div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            button {
+                width: 24px;
+                height: 24px;
+                border-radius: 5px;
+                border: 2px solid var(--modern-purple);
+                background-color: transparent;
+                &:hover {
+                    background-color: var(--white);
+                    cursor: pointer;
+                }
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
