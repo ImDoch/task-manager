@@ -45,15 +45,19 @@ body {
     button {
         width: 34px;
         height: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 10px;
         border: 2px solid var(--modern-purple);
-        background-color: var(--white);
+        background-color: transparent;
         &:hover {
             cursor: pointer;
             background-color: var(--purple-soft);
         }
         img {
-            width: 100%;
+            width: 24px;
+            height: 24px;
         }
     }
 }
@@ -128,4 +132,17 @@ form {
             }
         }
     }
+}
+/*Dark Theme*/
+.dark {
+    background-color: #222;
+}
+
+.dark .task-maker-app {
+    background-color: #333;
+}
+
+.dark .task-container__card {
+    background-color: #444;
+    color: white;
 }

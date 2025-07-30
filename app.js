@@ -1,6 +1,11 @@
 //accediendo al formulario y task-container
 const taskForm = document.querySelector('form')
 const taskContainer = document.querySelector('.task-container')
+//agregando las tareas existentes en localstorage
+loadTasks()
+//accediendo al boton para cambiar entre modo light y modo oscuro
+const modeButton = document.querySelector('.change-mode')
+const buttonImg = modeButton.firstElementChild
 //agregar tareas
 taskForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -8,11 +13,12 @@ taskForm.addEventListener('submit', event => {
     const task = taskInput.value
     if (task) {
     taskContainer.append(createTaskElement(task))
+    storeTaskInLocalStorage(task)
     taskInput.value = ''
     }
 })
 //crear article que contiene las tareas
-const createTaskElement = (task) => {
+function createTaskElement (task) {
   const taskCard = document.createElement('article')
   taskCard.classList.add('task-container__card')
   const taskContent = document.createElement('p')
@@ -50,9 +56,42 @@ const deleteTask = taskItem => {
     }
 }
 //funcion para editar elementos
-const editTask = taskItem => {
+function editTask (taskItem) {
     const newTask = prompt('Edita la tarea', taskItem.firstElementChild.textContent)
     if(newTask !== null) {
         taskItem.firstElementChild.textContent = newTask
+        updateLocalStorage()
     }
 }
+
+//usando localstorage para persistencia
+function storeTaskInLocalStorage (task)  {
+    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]')
+    tasks.push(task)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+//Insertar elementos guardados en localstorage en el DOM
+function loadTasks () {
+    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]')
+    tasks.forEach(task => {
+        taskContainer.append(createTaskElement(task))
+    });
+}
+
+function updateLocalStorage () {
+    const tasks = [...taskContainer.querySelectorAll('article')].map(article => article.firstElementChild.textContent)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+
+//cambiar imagen del boton
+modeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark')
+    const isSun = buttonImg.src.includes('sun-icon.svg')
+    if(isSun){
+        buttonImg.src = './assets/moon-icon.svg'
+    }
+    else {
+        buttonImg.src = './assets/sun-icon.svg'
+    }
+})
