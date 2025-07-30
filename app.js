@@ -1,6 +1,9 @@
 //accediendo al formulario y task-container
 const taskForm = document.querySelector('form')
 const taskContainer = document.querySelector('.task-container')
+//accediendo al boton para cambiar entre modo light y modo oscuro
+const modeButton = document.querySelector('.change-mode')
+const buttonImg = modeButton.firstElementChild
 //agregar tareas
 taskForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -56,3 +59,14 @@ const editTask = taskItem => {
         taskItem.firstElementChild.textContent = newTask
     }
 }
+
+//cambiar imagen del boton
+modeButton.addEventListener('click', () => {
+    const isSun = buttonImg.src.includes('sun-icon.svg')
+    if(isSun){
+        buttonImg.src = './assets/moon-icon.svg'
+    }
+    else {
+        buttonImg.src = './assets/sun-icon.svg'
+    }
+})
